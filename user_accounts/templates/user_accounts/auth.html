@@ -1,0 +1,13 @@
+{% extends 'quest_list/main.html'%}
+{% load crispy_forms_tags %}
+{% block main_section %}
+<div class="form-section">
+    <h2>Авторизация</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-outline-primary">Войти</button>
+    </form>
+    <hr>
+</div>
+{% endblock main_section %}

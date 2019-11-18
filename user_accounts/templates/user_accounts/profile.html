@@ -1,0 +1,13 @@
+{% extends 'quest_list/main.html'%}
+{% block main_section %}
+<div class="form-section">
+    <h2>Личный кабинет</h2>
+    <div class="media text-muted pt-3">
+        <img class="mr-2 rounded" style="width: 64px; height: 64px;" src="{{ user.profile.img.url }}">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+            <!-- Здесь должны выводиться данные о пользователе из бд (статы) типа Email и т.д. -->
+        </p>
+    </div>
+</div>
+{% endblock main_section %}

@@ -1,0 +1,61 @@
+{% extends 'quest_list/main.html' %}
+{% block main_section %}
+    <section class="jumbotron text-center" style = "background-color:white; height:275px">
+        <div class="container">
+            <h1 class="jumbotron-heading">База квестов</h1>
+            <p class="lead text-muted">Игровая система предоставит вам несколько базовых квестов. Также вы сами можете создавать квесты. <br> Можно выполнять несколько квестов параллельно.</p>
+            <p>
+                <a href="#" class="btn btn-primary my-2">Создать квест</a><br><br>
+            </p>
+            <h1>Системные квесты</h1>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for param in quest %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top"
+                                 width="100%"
+                                 height="50"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 preserveAspectRatio="xMidYMid slice"
+                                 focusable="false"
+                                 role="img"
+                                 aria-label="Placeholder: Thumbnail">
+                                <rect width="100%"
+                                height="100%"
+                                fill="#55595c">
+
+                            </rect>
+                                <text text-anchor="middle" x="50%" y="50%" fill="#eceeef" dy=".3em">
+                                    {{ param.quest_name }}
+                                </text>
+                            </svg>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>Тип квеста:</b> {{ param.quest_type }} <br>
+                                    <b>Предлагающий:</b> {{ param.creator}} <br>
+                                    {% if param.tags %} <b>Теги:</b> {{ param.tags }} <br> {% endif %}
+                                    <i><font color="blue">{{ param.quest_description }}</font></i> <br>
+                                    {% if param.reward %} <b>Награда:</b> {{ param.reward }} <br> {% endif %}
+                                    <b>Очки опыта:</b> +{{ param.XP_reward }} XP <br>
+                                    {% if param.XP_penalty %} <b>Штраф за невыполнение:</b> -{{ param.XP_penalty }} XP <br> {% endif %}
+                                    {% if param.deadline %} <b>Выполнить до</b> {{ param.deadline }} <br> {% endif %}
+                                    {% if param.progress %} <b>Прогресс:</b> {{ param.progress }} <br> {% endif %}
+                                    <b>Добавлено:</b> {{ param.date_of_creation }}
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success">Начать квест</button> <!-- Добавить: после нажатия конпки - появляется "Взято" и это записывается в профиль. -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock main_section %}
